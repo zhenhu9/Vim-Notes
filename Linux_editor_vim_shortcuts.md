@@ -39,7 +39,7 @@
 
 # Vim Learning Overview
 
-The VIM package offers an add-on program for guiding exercises, vimtutor, and can specify the language vimtutor [language] (such as `vimtutor en`). This attachment program is the basis for understanding the following content. Supported languages can be found in the directory /usr/share/vim/vim80/tutor/tutor[.language], or in the vimtutor man page.
+The VIM package provides a bash script program for guiding exercises, vimtutor, and can specify the language vimtutor [language] (such as `vimtutor en`). This program is the basis for understanding the following content. Supported languages can be found in the directory /usr/share/vim/vim80/tutor/tutor[.language], or in the vimtutor man page.
 
 Other manuals under the vim help command homepage are also covered in this content. The official website help page is more complete.
 
