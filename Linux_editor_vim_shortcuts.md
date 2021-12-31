@@ -236,7 +236,7 @@ Notes： Searching for special chars such as `.*[]^%/\?~$`, the escape char `\` 
 
 ------
 
-## Replace by match
+## Substitution by match
 
 ```
 :[range]s[ubstitute]/{pattern}/{string}/[flags] [count]
@@ -264,7 +264,7 @@ Notes： Searching for special chars such as `.*[]^%/\?~$`, the escape char `\` 
 
 ------
 
-## 高级匹配替换
+## Substitution with advanced matching
 
 ```
 /* Switch the first column to the second column.
@@ -286,40 +286,40 @@ Notes： Searching for special chars such as `.*[]^%/\?~$`, the escape char `\` 
 
 ## 综合命令
 
-:help		/* 帮助手册页，文档最前部描述了如何快速使用帮助。
+:help		/* Vim help.
 
-ctrl + G		/* 显示当前编辑状态，包含文件名和光标位置。
+ctrl + G		/* Display the status of file, including filename and the position of cursor.
 
 ga			/* View ASCII value of a char under the cursor.
 
-:!{program}		/* 执行外部命令。
-:m,nw !v{program}	/* 以文件 m 至 n 行之间的内容作为命令的参数执行命令。
-:. !bash	/* 当前行作为 bash 的参数执行，读取输出，当前行会被删除。
+:!{program}		/* Execute the external commands.
+:m,nw !v{program}	/* The content of between as a parameter to the program.
+:. !bash	/* The current line as a parameter of bash.
 
-:m,nd			/* 剪切 m 到 n 行的内容。
+:m,nd			/* Cut the content between m to n.
 
-:r filename		/* 在光标处插入指定文件的内容。
-:r !{program}		/* 在光标处插入命令的输出。
+:r filename		/* Insert the content of specified file.
+:r !{program}		/* Insert the output of the program.
 
-:e[dit] filename	/* 载入指定文件。
-:e[dit]!		/* 重载文件，文件的最后保存状态。
-:e[dit]! filename	/* 强制放弃当前的修改，并载入指定的文件。
+:e[dit] filename	/* Load the specified file.
+:e[dit]!		/* Reload the current file and discard the changes which didn't stored.
+:e[dit]! filename	/* Discard current changes forcely and load the specified file.
 
-:e[dit] /path		/* explore directories to find files.
+:e[dit] /path		/* Explore directories to find files.
 
-:pwd			/* 显示 vim 工作目录。
-:cd path		/* 改变 vim 工作目录。
+:pwd			/* Display the current working directory.
+:cd path		/* Change the current working directory.
 
-:f[ile]			/* 显示当前编辑状态。等同 ctrl + G。
-:f[ile] filename	/* 把当前文件名设为指定文件名（仅在缓存中）。
-:files			/* 显示所有打开的文件，包含缓存中的。
+:f[ile]			/* Display the status. Equate with `ctrl + G`.
+:f[ile] filename	/* Specify the current filename, but only in the buffer.
+:files			/* Display all of open files, including those in the buffer.
 
-:history		/* 显示命令历史。
+:history		/* Display commands history.
 q:		/* Open a windows at the bottom to display command history.
 
 :Man bash-command		/* IN a new windows dispaly man page.
 
-examples:
+Examples:
 
 ```
 /* It's so convinient to read the output of the external command.
@@ -334,16 +334,16 @@ drwxr-xr-x.  13 root root  155 Oct 31 10:28 usr
 drwxr-xr-x.  21 root root 4096 Oct 24 08:52 var
 ```
 
-注: Tab 命令补全在此处也适用。
+Notes: Tab command completion also applies here.
 
 ------
 
-## 文档保存和退出
+## Document save and exit
 
 ```
-{ :w[rite] | :w[rite] filename }	/* 保存/按指定文件名保存。
-{ :q[uit] | :q[uit]! }		/* 退出/退出并放弃修改。
-{ :wq | :wq! }		/* 保存并退出/强行退出。
+{ :w[rite] | :w[rite] filename }	/* Save as current filename or a specified filename.
+{ :q[uit] | :q[uit]! }		/* Quit/Quit with discarding changes.
+{ :wq | :wq! }		/* Save and Quit, or quit forcely.
 ```
 
 ------
