@@ -39,7 +39,7 @@
 
 # Vim Learning Overview
 
-The VIM package offers an add-on program for guiding exercises, vimtutor, and can specify the language vimtutor [language] (such as `vimtutor enh`). This attachment program is the basis for understanding the following content. Supported languages can be found in the directory /usr/share/vim/vim80/tutor/tutor[.language], or in the vimtutor man page.
+The VIM package offers an add-on program for guiding exercises, vimtutor, and can specify the language vimtutor [language] (such as `vimtutor en`). This attachment program is the basis for understanding the following content. Supported languages can be found in the directory /usr/share/vim/vim80/tutor/tutor[.language], or in the vimtutor man page.
 
 Other manuals under the vim help command homepage are also covered in this content. The official website help page is more complete.
 
@@ -51,68 +51,74 @@ The excerpted content can be used in a wider environments, and it's better to or
 
 ------
 
-## Vim 的几种模式
+## Several modes of Vim
 
-普通模式，是 Vim 默认模式，在进入其它模式后，按 <ESC> 键返回普通模式。
+Normal mode, is the Vim default mode, after entering other modes, press <ESC>
+or <Ctrl+{> key to return to normal mode. In normal mode, you can easily switch
+to other modes below.
 
-替换模式：
+Replacement mode:
 
-    - 普通模式按 r，替换光标处的单个字符，替换后自动返回到普通模式。
-    - 普通模式按 R，在光标处进入替换模式。
+- Pressing `r`, replacing a char, then return to normal mode automatically.
+- Pressing `R`, changing to replacement mode.
 
-插入模式：
+Insert mode:
 
-    - 普通模式按 i/I/a/A，在光标位置/行首/下一个字符/行尾进入插入模式。
-    - 普通模式按 o/O，在光标所在行行下/上进入插入模式。
+- Pressing `i/I/a/A`, at the cursor/beggining of line/next char/next line,
+  entering insert mode.
+- Pressing `o/O`，under/above the line where the cursor is located, entering
+  insert mode.
 
-可视模式：
+Visual mode:
 
-    - 普通模式按 v，进入可视模式, 高亮选取文本；
-    - 普通模式按 Shift + V，高亮按行选取；
-    - 普通模式按 Ctrl + V，高亮按块选取。
+- Pressing `v`，entering visual mode, then selecting text in highlighting.
+- Pressing <Shift + V>，selecting text by line in highlighting.
+- Pressing <Ctrl + V>，selecting text by block in highlighting.
 
-底部命令模式，可在普通模式/可视模式下使用 : 、\ 或 ? 执行命令或临时配置 vim。
+Command-line command:
+
+Command-line command, which can be used in normal mode/visual mode execute the command or temporarily configure vim by pressing `:`.
 
 ------
 
-## 光标定位
+## Cursor positioning
 
-移动光标在组合操作中常称为动作。这些动作在普通模式中执行。
+Moving the cursor is often referred to as an action in a combination operation. These actions are performed in normal mode mostly.
 
 ```
-h，j，k，l		/* 左、下、上、右移。
+h，j，k，l		/* Move the cursor to go left, down, up, right.
 
-gj, gk			/* 自动换行的行间下，上移动。
+gj, gk			/* Move the cursor to go down, up, when lines wrap.
 
-[ home | 0 ] | ^ | g_ | [ end | $ ]	/* 移动到行首/首字符/尾字符/行尾；
-g^ | gm | g$		/* 移动到行首/中/尾。
+[ home | 0 ] | ^ | g_ | [ end | $ ]	/* Go to the beginning/first char/last char/end of line.
+g^ | gm | g$		/* Go to the first/middle/last char of line.
 
-w | W			/* 右移一个单词/字符串位，光标停在首字符；
-b | B			/* 左移一个单词/字符串位，光标停在首字符；
-e | E			/* 右移一个单词/字符串位，光标停在尾字符；
-ge | gE			/* 左移一个单词/字符串位，光标停在尾字符；
+w | W			/* Jump forwards by word/string，the cursor at the first char.
+b | B			/* Like above, but jump backwords.
+e | E			/* Jump forward by word/string，the cursor at the end char.
+ge | gE			/* Like above, but jump backwords.
 
-gg | G			/* 移动到首/末行；
-Number[gg |G]		/* 移动到指定行；
+gg | G			/* Jump to the first line/end line.
+Number[gg |G]		/* Jump to the `Number` line.
 
-/* 移动到当前行 char 字符位/前，如再输入分号（;），则移动到下一个匹配位。
+/* Jump to the `char`. Pressing `;` to jump to the next occurrence.
 { f|tchar }
-{ F|Tchar }		/* 同上，只是反向。
+{ F|Tchar }		/* Like above, but jump backwords.
 
-%			/* 小、方、花括号。
+%			/* Find parenthesis or square/curly brackets.
 
 ( | )			/* the beginning of previous/next sentence.
 { | }			/* the beginning of current/next paragraph.
 [[ | ]]			/* the beginning of current/next section.
 
-/* 在当前行移动光标至 Nth 字符/相对当前光标位置的 Nth 字符。
+/* Move the cursor by `Number` of chars.
 Number| | Number<space>
 
 Number%			/* Nth percentage of file.
 Number<enter>		/* Nth line from current line.
 
-[ nG | ngg ]		/* 移动到第 n 行。
-{ H | M | L }		/* 移动到屏幕页首/页中/页尾。
+[ nG | ngg ]		/* Jump to the `n` line.
+{ H | M | L }		/* Jump to the first/middle/end line in the window.
 
 CTRL-F/B		/* Scroll down/up full page.
 CTRL-D/U		/* Scroll down/up half page.
@@ -120,17 +126,17 @@ CTRL-D/U		/* Scroll down/up half page.
 
 ------
 
-## 操作符
+## Operator
 
-删除，改变，剪切，复制，粘贴:
+Delete, modify, cut, yank, paste:
 
 ```
-x, c, d , y		/* 分别为删除、改变、剪切和复制操作符。
+x, c, d , y		/* Delete, modify, cut, yank.
 
-{ p | P }		/* 粘贴到所在行下/上。
+{ p | P }		/* Paste below/above the line.
 
-{ yy | [ dd | D ] }	/* 复制/删除（剪切）所在行。
-[n]dd			/* 删除（剪切）n 行。
+{ yy | [ dd | D ] }	/* Yank/delete/cut the line.
+[n]dd			/* Delete/cut n lines.
 ```
 
 ------
