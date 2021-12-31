@@ -286,6 +286,7 @@ Notes： Searching for special chars such as `.*[]^%/\?~$`, the escape char `\` 
 
 ## 综合命令
 
+```
 :help		/* Vim help.
 
 ctrl + G		/* Display the status of file, including filename and the position of cursor.
