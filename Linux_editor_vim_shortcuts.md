@@ -319,6 +319,7 @@ ga			/* View ASCII value of a char under the cursor.
 q:		/* Open a windows at the bottom to display command history.
 
 :Man bash-command		/* IN a new windows dispaly man page.
+```
 
 Examples:
 
