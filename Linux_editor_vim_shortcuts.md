@@ -141,56 +141,61 @@ x, c, d , y		/* Delete, modify, cut, yank.
 
 ------
 
-## 操作组合
-
-    次数 动作
-    | ----- | ---> 可以组成作用域
-
-     [操作次数] 操作符 作用域 （格式之间没有空格）
-
-    可视模式步骤：
-    可视模式 [操作次数] 作用域 操作符（格式之间没有空格）
-       |     | --------------|
-       v        选择可视区域   执行操作
-
-注：改变、剪切和复制命令称作操作符，操作次数可在操作符之前或之后。
-
-examples:
+## Combination of actions
 
 ```
-3j		/* 下移三行。
-4x		/* 删除4个字符。
+     Counts action
+    | ----------- | ---> The results can be used as scope.
 
-d3fs		/* 删除三个连续行内匹配 s。
-3dfs		/* 同上。
+    [counts] operator scope （no spaces between them.）
 
-Ctrl+V2jd	/* 可视模式行选取，下移两行选取，删除。
+    Steps in visual mode:
 
-3a!<Esc>	/* 添加三个感叹号。
-
-d3ap		/* 删除3个段落。
+    visual mode  [counts] scope  operator (no spaces between them.)
+       |        | ------------ |
+       v         select scope    execute operation
 ```
 
-文本对象
+**Notes**: The counts can be before or after modifying, cutting, yanking operator.
 
-aw | as | ap		/* 一个词/一句/一段。
-a( | a[	| a{		/* 小括号块/中括号/花括号。
-a< | at		/* 单个 html <aaa> / <aaa> </aaa> 。
-a" | a' | a`	/* 由双/单/反引号阔起的部分。
+Examples:
 
-%			/* 小、方、花括号。
+```
+3j		/* Move down by 3 lines.
+4x		/* Delete 4 chars.
 
-| 词、句、段 |              括号           |      引号      |      html 标签       |
+d3fs		/* Delete 3 scopes of finding `s` char.
+3dfs		/* Like above.
+
+Ctrl+V2jd	/* In visual mode, move down 2 line, delete.
+
+3a!<Esc>	/* Append 3 exclamation marks.
+
+d3ap		/* Delete 3 paragraphs.
+```
+
+Text object
+
+```
+aw | as | ap		/* A word/sentence/paragraph.
+a( | a[	| a{		/* A brace/square brace/curly brace.
+a< | at		/* A html <aaa> / <aaa> </aaa> 。
+a" | a' | a`	/* The content between ", ', `.
+
+%			/* A brace/square brace/curly brace.
+
+|  w, s, p   |         parentheses         |   quotation    |      html tags       |
 | ---------- | --------------------------- | -------------- | -------------------- |
 | aw | iw    | a) = a( = ab | i) = i( =ib  | a"  | a'  | a` | a> = a<  |  i> = i<  |
 | aW | iW    | a] = a[      | i] = i[      | i"  | i'  | i` | at       |  it       |
 | as | is    | a} = a{ = aB | i} = {i = iB |                |                      |
 | ap | ip    |              |              |                |
-| a 整体     | i 不含括引号                | 有无 <>        | 有无 <aaa></aaa>     |
+|  whole     | i means no marks itself     |                |                      |
 
-注：`:help text-objects` 查询有哪些文本对象。
+Notes：`:help text-objects` to get information about text objects.
 
-注：可视模式下选取文本后，`:w filename` 保存所选内容到指定文件。Ctrl+V 要选取长短不一致的多行时，要使用 $。
+Notes: In visual mode, to select multiple lines of inconsistent length, use `$` char.
+```
 
 ------
 
