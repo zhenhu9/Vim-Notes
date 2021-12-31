@@ -37,23 +37,22 @@
 
 ------
 
-# vim 学习概述
+# Vim Learning Overview
 
-VIM 软件包提供了一个指导练习的附件程序 vimtutor ，并且可以指定语言 vimtutor [language] （如 vimtutor zh）。此附件程序是理解以下备忘单的基础。支持的语种请查看目录 /usr/share/vim/vim80/tutor/tutor[.language]，或在 vimtutor 手册页中查看。
+The VIM package offers an add-on program for guiding exercises, vimtutor, and can specify the language vimtutor [language] (such as `vimtutor enh`). This attachment program is the basis for understanding the following content. Supported languages can be found in the directory /usr/share/vim/vim80/tutor/tutor[.language], or in the vimtutor man page.
 
-VIM 帮助命令首页下的其它手册内容在此备忘单内也有部分涵盖。官网帮助页面内容更全。
+Other manuals under the vim help command homepage are also covered in this content. The official website help page is more complete.
 
-节选的内容可在较多环境下使用，最好根据自己学习过程的需求做相应的整理或增删。推荐使用版本管理工具 git。
+The excerpted content can be used in a wider environments, and it's better to organize or add or delete accordingly according to the needs of your own learning process. Version management tool git is recommended.
 
-VIM 官网：https://www.vim.org/
+[VIM Official Website:](https://www.vim.org/)
 
-VIM 帮助页面：https://vimhelp.org/
+[VIM Manual Page:](https://vimhelp.org/)
 
 ------
 
 ## Vim 的几种模式
 
-```
 普通模式，是 Vim 默认模式，在进入其它模式后，按 <ESC> 键返回普通模式。
 
 替换模式：
@@ -73,7 +72,6 @@ VIM 帮助页面：https://vimhelp.org/
     - 普通模式按 Ctrl + V，高亮按块选取。
 
 底部命令模式，可在普通模式/可视模式下使用 : 、\ 或 ? 执行命令或临时配置 vim。
-```
 
 ------
 
@@ -139,7 +137,6 @@ x, c, d , y		/* 分别为删除、改变、剪切和复制操作符。
 
 ## 操作组合
 
-```
     次数 动作
     | ----- | ---> 可以组成作用域
 
@@ -151,7 +148,6 @@ x, c, d , y		/* 分别为删除、改变、剪切和复制操作符。
        v        选择可视区域   执行操作
 
 注：改变、剪切和复制命令称作操作符，操作次数可在操作符之前或之后。
-```
 
 examples:
 
@@ -171,7 +167,6 @@ d3ap		/* 删除3个段落。
 
 文本对象
 
-```
 aw | as | ap		/* 一个词/一句/一段。
 a( | a[	| a{		/* 小括号块/中括号/花括号。
 a< | at		/* 单个 html <aaa> / <aaa> </aaa> 。
@@ -190,7 +185,6 @@ a" | a' | a`	/* 由双/单/反引号阔起的部分。
 注：`:help text-objects` 查询有哪些文本对象。
 
 注：可视模式下选取文本后，`:w filename` 保存所选内容到指定文件。Ctrl+V 要选取长短不一致的多行时，要使用 $。
-```
 
 ------
 
@@ -217,7 +211,6 @@ ctrl + R		/* 撤销之前的撤销。
 
 ## 匹配搜索
 
-```
 /keyword		/* 向上查找 keyword， n 下一个； N 前一个。
 ?keyword		/* 向下查找 keyword， n 下一个； N 前一个。
 	\<keyword	/* 仅匹配与 keyword 同样开头的单词。
@@ -228,13 +221,11 @@ ctrl + R		/* 撤销之前的撤销。
 { * | # }	/* 在任何单词下按 */# 号，则向下/上查找此单词。
 
 注：.*[]^%/\?~$ 字符具有特殊含义，如要搜索此类字符必须在字符前加 \。
-```
 
 ------
 
 ## 匹配替换
 
-```
 :[range]s[ubstitute]/{pattern}/{string}/[flags] [count]
 
 :s/old/new		/* 在当前行替换第一个匹配。
@@ -256,7 +247,6 @@ ctrl + R		/* 撤销之前的撤销。
 :%s/^/#/g		/* 在每一行的行首插入 #，^ 表示行首。
 :%s/$/./g		/* 在每一行的行尾插入 .，$ 表示行尾。
 :%s/\s\+$//g		/* 移除行尾空格。
-```
 
 ------
 
@@ -282,7 +272,6 @@ ctrl + R		/* 撤销之前的撤销。
 
 ## 综合命令
 
-```
 :help		/* 帮助手册页，文档最前部描述了如何快速使用帮助。
 
 ctrl + G		/* 显示当前编辑状态，包含文件名和光标位置。
@@ -315,7 +304,6 @@ ga			/* View ASCII value of a char under the cursor.
 q:		/* Open a windows at the bottom to display command history.
 
 :Man bash-command		/* IN a new windows dispaly man page.
-```
 
 examples:
 
