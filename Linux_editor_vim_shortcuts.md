@@ -199,65 +199,68 @@ Notes: In visual mode, to select multiple lines of inconsistent length, use `$` 
 
 ------
 
-## 撤消与重做
+## Undo and Redo
 
 ```
-u		/* 撤销之前的一个改动，除了 u 本身的行为。
-U			/* 撤销在一行中所作的所有改动。
+u		/* Undo a change.
+U			/* Undo changes in a line.
 
-:undolist		/* 撤销历史。
-[count]u		/* 撤销 count 个改动。
-:undo count		/* 撤销 count 个改变。
+:undolist		/* Display undo list.
+[count]u		/* Undo count changes.
+:undo count		/* Like above.
 
-.			/* 重复上一次操作。
+.			/* Redo a operation.
 
-ctrl + R		/* 撤销之前的撤销。
-:redo			/* 同上。
+ctrl + R		/* Undo a undo.
+:redo			/* Like above.
 
-:earlier 9m		/* 回到 9 分钟前。
-:later 18s		/* 前进 18 秒。
+:earlier 9m		/* Go back to the status of 9 minutes ago.
+:later 18s		/* Forward 18 seconds.
 ```
 
 ------
 
-## 匹配搜索
+## Search by match
 
-/keyword		/* 向上查找 keyword， n 下一个； N 前一个。
-?keyword		/* 向下查找 keyword， n 下一个； N 前一个。
-	\<keyword	/* 仅匹配与 keyword 同样开头的单词。
-	keyword\>	/* 仅匹配与 keyword 同样结尾的单词。
-	\<keyword\>	/* 仅匹配与 keyword 完全一样的单词。
+```
+/keyword		/* Looks up keyword, n, forward occurrence； N, backward occurrence.
+?keyword		/* Like above, but looks down.
+	\<keyword	/* Matches only words that begin with the same as keyword.
+	keyword\>	/* Matches only words that end with the same as keyword.
+	\<keyword\>	/* Matches only words that are exactly the same as keyword.
 
-/* 非底部命令模式的快捷命令查找。
-{ * | # }	/* 在任何单词下按 */# 号，则向下/上查找此单词。
-
-注：.*[]^%/\?~$ 字符具有特殊含义，如要搜索此类字符必须在字符前加 \。
+/* Lookup the same world where the cursor is located.
+{ * | # }	/* Find the word down/up.
+```
+Notes： Searching for special chars such as `.*[]^%/\?~$`, the escape char `\` maybe used.
 
 ------
 
-## 匹配替换
+## Replace by match
 
+```
 :[range]s[ubstitute]/{pattern}/{string}/[flags] [count]
 
-:s/old/new		/* 在当前行替换第一个匹配。
-:s/old/new/g		/* g 当前行替换所有匹配。
-:#,#s/old/new/g		/* #, #s 行范围之内。
-:%s/old/new/g		/* % 范围是整个文件。
-:%s/old/new/ge		/* 对多个文件进行匹配，e 可以规避错误而中断，如无匹配。
-:%s/old/new/gc		/* c 每次替换都提示确认。
+:s/old/new		/* Replaces the first match in the current line.
+:s/old/new/g		/* Replaces all matches with the current line.
+:#,#s/old/new/g		/* Line range between #, #s.
+:%s/old/new/g		/* % means the whole file.
+:%s/old/new/ge		/* Preventing the disruption of errors.
+:%s/old/new/gc		/* Prompt confirming.
 
-             i		/* 忽略大小写。
-             I		/* 不忽略大小写。
+             i		/* Ignore uppercase.
+             I		/* Don't ignore.
 
-:'<,'>s/old/new/g	/* '<,'> 范围是选择的可视块。
+:'<,'>s/old/new/g	/* '<,'> means the scope of selection。
 
-:.,$			/* 范围是当前行到行尾。
-:.+3,$-5		/* 范围是当前行+3到行尾-5。
-"'b,'t			/* 范围是标记 b 到 t。
+:.,$			/* From current line to the last line.
+:.+3,$-5		/* The range is the current line +3 to the end of the line -5.
+"'b,'t			/* The range is tag b to tag t.
 
-:%s/^/#/g		/* 在每一行的行首插入 #，^ 表示行首。
-:%s/$/./g		/* 在每一行的行尾插入 .，$ 表示行尾。
-:%s/\s\+$//g		/* 移除行尾空格。
+:%s/^/#/g		/* ^ means the beginning of each line. Insert #.
+:%s/$/./g		/* $ means the end of line. Insert `.`.
+:%s/\s\+$//g		/* Removes line-ending spaces.
+```
 
 ------
 
